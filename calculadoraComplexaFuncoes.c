@@ -337,7 +337,7 @@ void validaExpressao(Formato *formatoOperacao, char *expressao, char *operacao, 
     for(indice1=0 ; *(expressao+indice1) != '\0' ; indice1++){
         if(*(expressao+indice1) == 61){
             *(expressao+indice1+1) = '\0';
-            //operacao_do_usuario[++indice1] = '\0';
+            
             break;
         }
     }
@@ -388,7 +388,7 @@ void validaExpressao(Formato *formatoOperacao, char *expressao, char *operacao, 
         case '^':
             *formatoOperacao = exponenciacao;
             *operacao = *(expressao+loop);
-            //tratar caso exponenciacao
+            
             return;
             break;
         case '=':
@@ -403,7 +403,6 @@ void validaExpressao(Formato *formatoOperacao, char *expressao, char *operacao, 
 
     //                    Lê complexo 2
     loop++;
-    //printf("\nLoop: %d", loop);
 
     if(leComplexo(expressao, &ComplexoDois, &loop, &formatoOperacao)){
         *formatoOperacao = erro;
@@ -432,7 +431,7 @@ float procuraNum(char expressao[], int **indice){
     float resultado = 0;
 
     for(ind = **indice ;; ind++){
-        if((*(expressao+ind) >= 48) && (*(expressao+ind) <= 57)){     //Até quando é um número?
+        if((*(expressao+ind) >= 48) && (*(expressao+ind) <= 57)){
             qtd++;
         }
         else{   //Coloca na variável
@@ -547,7 +546,7 @@ void conversaoComplexo(Complexo **Complexo, char tipo){
             (**Complexo).tipo = 'i';
         }else if(tipo == 'p'){  //Se não for, converte para polar
             primarg = sqrt(pow((**Complexo).operando1,2) + pow((**Complexo).operando2,2));
-            //segarg = (atan2((**Complexo).operando1/primarg))*180/PI;
+            
             segarg = (atan2((**Complexo).operando2,(**Complexo).operando1))*180/M_PI;
             (**Complexo).operando1 = primarg;
             (**Complexo).operando2 = segarg;
